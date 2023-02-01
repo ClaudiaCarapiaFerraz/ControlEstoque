@@ -1,0 +1,46 @@
+﻿@model ControlEstoque.Models.Usuario
+
+@{
+    ViewData["Title"] = "Login";
+}
+<div class="container-fluid" style="padding-top:30px">
+
+    <h1 class="text-center" style="color:#4682B4;">Login</h1>
+    @if (TempData["MensagemErro"] != null)
+    {
+        <div class="alert alert-danger" role="alert" align="center">
+            @TempData["MensagemErro"]
+        </div>
+    }
+
+<hr />
+    <div class="row justify-content-center">
+    <div class="col-md-4">
+        <form asp-action="Login">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <div class="form-group">
+                <label asp-for="Email" class="control-label"></label>
+                <input asp-for="Email" class="form-control" />
+                <span asp-validation-for="Email" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Senha" class="control-label"></label>
+                <input asp-for="Senha" class="form-control" />
+                <span asp-validation-for="Senha" class="text-danger"></span>
+            </div>
+            <br />
+            <div class="form-group">
+                <div class="text-center">
+                    <input type="submit" value="Entrar" class="btn" style="background-color:#494949; color:#EDEBEB;" />
+                    <a class="btn" style="background-color:#494949; color:#EDEBEB;" asp-controller="Home" asp-action="Index">Voltar</a>
+                </div>
+            </div>
+        </form>
+    </div>
+</div>
+
+</div>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}
